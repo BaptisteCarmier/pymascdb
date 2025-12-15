@@ -1,5 +1,6 @@
-from pathlib import Path
 from datetime import datetime
+from pathlib import Path
+
 
 def uploaddirs(campaigndir: Path, starthr_vec: datetime, endhr_vec: datetime):
     """
@@ -12,7 +13,7 @@ def uploaddirs(campaigndir: Path, starthr_vec: datetime, endhr_vec: datetime):
     for folder in alldir_names:
         try:
             # Check if folder format is yyyy.mm.dd
-            folder_datenum = datetime.strptime(folder.name, '%Y.%m.%d')
+            folder_datenum = datetime.strptime(folder.name, "%Y.%m.%d")
 
             # Use starthr_vec and endhr_vec directly
             t_min = starthr_vec

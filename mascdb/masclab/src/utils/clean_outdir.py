@@ -6,7 +6,6 @@ Provides helpers to prepare output directories before a run.
 
 import logging
 import shutil
-
 from pathlib import Path
 
 logger = logging.getLogger(__name__)
