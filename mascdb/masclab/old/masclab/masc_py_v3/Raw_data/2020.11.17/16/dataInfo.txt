@@ -1,0 +1,3 @@
+snowflake id	date (mm.dd.yyyy)	time (hh:mm:ss.mmmmmm)	fall speed (m/s)
+3	11.17.2020	16:25:24.454514	1.44979
+4	11.17.2020	16:25:33.315330	1.79842

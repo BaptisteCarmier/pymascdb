@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+.env
+
+# Données / sorties de pipeline (images + joblib)
+*.joblib
+*.mat
+
+# Données locales (RAW, traitées, anciennes arborescences)
+/data/
+/pyVSmat/GT/
+/pyVSmat/compare_out/
+
+# Fichiers Windows
+Thumbs.db
+Desktop.ini

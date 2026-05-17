@@ -1,0 +1,4 @@
+flake ID	camera ID	date (mm.dd.yyyy)	time (hh:mm:ss.mmmmmm)	image name	frame timestamp
+11794	1	01.03.2021	18:20:32.523511	2021.01.03_18.20.32_flake_11794_cam_1.png	0
+11794	2	01.03.2021	18:20:32.601511	2021.01.03_18.20.32_flake_11794_cam_2.png	0
+11794	0	01.03.2021	18:20:32.445511	2021.01.03_18.20.32_flake_11794_cam_0.png	0

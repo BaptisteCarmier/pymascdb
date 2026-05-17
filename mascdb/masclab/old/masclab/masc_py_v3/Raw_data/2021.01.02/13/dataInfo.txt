@@ -1,0 +1,2 @@
+snowflake id	date (mm.dd.yyyy)	time (hh:mm:ss.mmmmmm)	fall speed (m/s)
+11401	01.02.2021	13:53:37.516828	0.66628

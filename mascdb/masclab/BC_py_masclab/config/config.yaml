@@ -1,0 +1,95 @@
+# MASC Processing Pipeline - YAML Configuration
+
+# Label/data configuration
+label:
+  # Root folder containing all campaign date folders (e.g. data/RAW/2015.06.20/)
+  campaigndir: "C:/Users/bapti/Desktop/Archive_Baptiste/LTE/masclab_codeReview/data/RAW"
+
+  # Output directory:
+  # Creates a PROCESSED folder in the parent directory of campaigndir by default, e.g. .. /data/PROCESSED
+  # Or set an explicit absolute path
+  outdir: "auto"
+
+  # Time window (YYYY-MM-DD HH:MM:SS).
+  # Use "all" to process every campaign folder found in campaigndir.
+  starthr_vec: "all"
+  endhr_vec:   "all"
+
+# Processing parameters
+processing:
+  # Mode
+  use_triplet_algo: true # Enable TRIPLET processing mode by default
+
+  # Parallelism
+  parallel: true
+  max_workers: 6 # Maximum number of parallel workers (to avoid memory issues)
+
+  # Output options
+  saveresults: true
+  save_format: "joblib"   # 'joblib' | 'pkl' | 'mat'
+
+  # If true, wipe outdir at the start of the run (dangerous for multi-campaign use!)
+  clean_outdir: true
+
+  # Figures
+  generate_figs: true
+  display_figs: false
+  save_figs: true
+
+  # Image processing
+  flakebrighten: false
+
+  # Thresholds
+  backthresh: 15
+  sizemin: 30
+  min_area: 100
+  minbright: 0.15
+  max_intensthresh: 0.25
+  min_hole_area: 10
+
+  # Image margins to discard
+  discardmat: [0, 0, 0, 0] #[400, 548, 320, 320]
+
+  # Triplet (only if use_triplet_algo: true)
+  matching_tol_pix: 10
+  matching_tol_percent: 20 # value in percent 0-100 range 
+  camera_order: [0, 1, 2]
+  triplet_required_views: 3
+  triplet_allow_partial: true
+
+# Classification parameters (used by scripts/runner_classify.py)
+classification:
+  # Path to the folder containing the trained MATLAB .mat classifiers.
+  classifiers_dir: "../masclab/classification/logit_trained_models"
+
+  # Classifier filenames inside classifiers_dir ### Defaults extracted from matlab translation in make_predictions_for_campaign.m
+  class:   "logit_v.1.1_FINAL3_6classes_weighted_scheme.mat"
+  riming:  "logit_v.1.1_FINAL3_riming_5classes_weighted_scheme.mat"
+  melting: "logit_v.1.1_FINAL3_melting_2classes_noweight.mat"
+
+  # Images with xhi <= blurry_threshold receive label_ID = -9 (blurry)
+  blurry_threshold: 0
+
+  # Number of parallel workers for feature extraction (1 = sequential)
+  n_jobs: 4
+
+# Daily quicklooks (scripts/runner_quicklooks.py) — recap PNGs from classified ROI files
+quicklooks:
+  # "auto" → ``<outdir>/Quicklooks`` then one subfolder per day ``yyyy.mm.dd/``
+  savepath: "auto"
+  pixres_mm: 0.0335
+  xi_thresh: 9
+  Nmin_interval: 30
+  Nmin_shift: 10
+  Nclasses_masc: 6
+  MASC_classes: ["SP", "CC", "PC", "AG", "GR", "CPC"]
+  MASC_classes_desired: [1, 2, 3, 4, 5, 6]
+  N_MascSamples_min: 0
+  # If omitted, defaults to processing.use_triplet_algo
+  use_triplet: null
+  OR_180: true
+  savefigs: true
+  overview_classif: true
+  overview_microstruct: true
+  disp_now: false
+  qualities: ["GOOD"]
